@@ -1,0 +1,180 @@
+/* PlatformFeatures.css */
+.platform-container {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Platform Navigation Menu */
+  .platform-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .platform-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .platform-nav-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .platform-nav-item.active {
+    color: #006241;
+    font-weight: 600;
+  }
+  
+  .platform-nav-item.active .platform-icon {
+    background-color: #006241;
+    color: white;
+  }
+  
+  .platform-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    margin-right: 4px;
+  }
+  
+  .platform-name {
+    font-size: 16px;
+  }
+  
+  /* Feature Showcase */
+  .feature-showcase {
+    display: flex;
+    background-color: #006241;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 600px;
+  }
+  
+  .feature-dashboard {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .dashboard-image {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  
+  .feature-content {
+    flex: 1;
+    padding: 60px 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .feature-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+  
+  .feature-description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  
+  .feature-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .benefit-icon {
+    color: white;
+    flex-shrink: 0;
+  }
+  
+  .benefit-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .explore-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid white;
+    align-self: flex-start;
+    padding-bottom: 5px;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+  }
+  
+  .explore-link:hover {
+    opacity: 0.8;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .feature-showcase {
+      flex-direction: column;
+    }
+    
+    .feature-dashboard {
+      padding: 40px 40px 0;
+    }
+    
+    .feature-content {
+      padding: 40px;
+    }
+    
+    .feature-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .platform-nav {
+      gap: 10px;
+      justify-content: center;
+    }
+    
+    .platform-nav-item {
+      padding: 8px 12px;
+    }
+    
+    .feature-title {
+      font-size: 2rem;
+    }
+    
+    .feature-description,
+    .benefit-text {
+      font-size: 1rem;
+    }
+  }

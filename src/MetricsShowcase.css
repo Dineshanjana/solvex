@@ -1,0 +1,102 @@
+/* MetricsShowcase.css */
+.metrics-container {
+    width: 100%;
+    background-color: #051c49; /* Dark blue background */
+    color: white;
+    padding: 5rem 1rem;
+  }
+  
+  .metrics-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  .metric-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .metric-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .metric-heading {
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+  
+  .metric-description {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+  
+  .highlight {
+    font-weight: 600;
+  }
+  
+  .logo-container {
+    margin-top: auto;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .client-logo {
+    max-height: 100%;
+    max-width: 150px;
+    filter: brightness(0) invert(1); /* Makes logos white */
+    opacity: 0.9;
+  }
+  
+  .vertical-divider {
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 180px;
+    margin-top: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .metrics-wrapper {
+      flex-direction: column;
+    }
+    
+    .metric-column {
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+    
+    .vertical-divider {
+      display: none;
+    }
+    
+    .metric-heading {
+      font-size: 3.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .metrics-container {
+      padding: 3rem 1rem;
+    }
+    
+    .metric-heading {
+      font-size: 3rem;
+    }
+  }
