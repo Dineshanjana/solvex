@@ -1,0 +1,301 @@
+:root {
+  --slx-auth-dark-teal: #0a3331;
+  --slx-auth-white: #ffffff;
+  --slx-auth-green: #39b54a;
+  --slx-auth-black: #000000;
+  --slx-auth-accent: #41e8b3;
+  --slx-auth-secondary-accent: #2cd5fb;
+  --slx-auth-tertiary-accent: #ff9a9e;
+  --slx-auth-card-bg: rgba(255, 255, 255, 0.1);
+  --slx-auth-glass-effect: rgba(255, 255, 255, 0.08);
+  --slx-auth-glass-border: rgba(255, 255, 255, 0.1);
+  --slx-auth-glow: 0 0 15px rgba(65, 232, 179, 0.5);
+}
+
+.slx-auth-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 51, 49, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+}
+
+.slx-auth-modal {
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), var(--slx-auth-glow);
+  border: 1px solid var(--slx-auth-glass-border);
+  background: var(--slx-auth-dark-teal);
+  color: var(--slx-auth-white);
+}
+
+.slx-auth-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--slx-auth-dark-teal), rgba(10, 51, 49, 0.95));
+  z-index: -1;
+}
+
+.slx-auth-close-button {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--slx-auth-glass-effect);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--slx-auth-white);
+  border: 1px solid var(--slx-auth-glass-border);
+  z-index: 10;
+}
+
+.slx-auth-close-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.slx-auth-modal-tabs {
+  display: flex;
+  position: relative;
+  padding: 5px;
+  margin: 20px 67px 10px;
+  background: var(--slx-auth-glass-effect);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--slx-auth-glass-border);
+}
+
+.slx-auth-tab-button {
+  flex: 1;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--slx-auth-white);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.slx-auth-tab-indicator {
+  position: absolute;
+  width: 50%;
+  height: calc(100% - 10px);
+  background: linear-gradient(135deg, var(--slx-auth-accent), var(--slx-auth-secondary-accent));
+  border-radius: 8px;
+  top: 5px;
+  transition: left 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 0;
+  box-shadow: var(--slx-auth-glow);
+}
+
+.slx-auth-modal-content {
+  padding: 24px 32px 32px;
+}
+
+.slx-auth-form h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 28px;
+  color: var(--slx-auth-white);
+  font-weight: 700;
+}
+
+.slx-auth-form-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 28px;
+  font-size: 15px;
+}
+
+.slx-auth-form-group {
+  margin-bottom: 24px;
+}
+
+.slx-auth-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slx-auth-white);
+}
+
+.slx-auth-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slx-auth-input-icon {
+  position: absolute;
+  left: 16px;
+  width: 20px;
+  height: 20px;
+  fill: var(--slx-auth-accent);
+  opacity: 0.8;
+}
+
+.slx-auth-form-group input {
+  width: 100%;
+  padding: 14px 16px 14px 46px;
+  background: var(--slx-auth-glass-effect);
+  border: 1px solid var(--slx-auth-glass-border);
+  border-radius: 12px;
+  font-size: 16px;
+  color: var(--slx-auth-white);
+  backdrop-filter: blur(5px);
+}
+
+.slx-auth-form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.slx-auth-form-group input:focus {
+  outline: none;
+  border-color: var(--slx-auth-accent);
+  box-shadow: var(--slx-auth-glow);
+}
+
+.slx-auth-form-group input:focus + .slx-auth-input-icon {
+  opacity: 1;
+}
+
+.slx-auth-password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.slx-auth-forgot-password {
+  font-size: 14px;
+  color: var(--slx-auth-secondary-accent);
+  text-decoration: none;
+}
+
+.slx-auth-forgot-password:hover {
+  color: var(--slx-auth-accent);
+  text-decoration: underline;
+}
+
+.slx-auth-password-hint {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.slx-auth-submit-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--slx-auth-accent), var(--slx-auth-secondary-accent));
+  color: var(--slx-auth-dark-teal);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--slx-auth-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.slx-auth-submit-button span {
+  z-index: 1;
+}
+
+.slx-auth-button-icon {
+  width: 16px;
+  height: 16px;
+  fill: var(--slx-auth-dark-teal);
+  margin-left: 8px;
+  opacity: 0;
+}
+
+.slx-auth-submit-button:hover {
+  transform: translateY(-2px);
+}
+
+.slx-auth-submit-button:hover span {
+  transform: translateX(-10px);
+}
+
+.slx-auth-submit-button:hover .slx-auth-button-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slx-auth-submit-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.slx-auth-terms-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-top: 24px;
+  line-height: 1.5;
+}
+
+.slx-auth-terms-text a {
+  color: var(--slx-auth-secondary-accent);
+  text-decoration: none;
+}
+
+.slx-auth-terms-text a:hover {
+  color: var(--slx-auth-accent);
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .slx-auth-modal {
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .slx-auth-modal-content {
+    padding: 20px 24px 24px;
+  }
+  
+  .slx-auth-form h2 {
+    font-size: 24px;
+  }
+  
+  .slx-auth-form-group input {
+    padding: 12px 14px 12px 42px;
+  }
+  
+  .slx-auth-submit-button {
+    padding: 12px;
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  .slx-auth-modal {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), var(--slx-auth-glow);
+  }
+}

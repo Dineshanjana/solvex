@@ -1,21 +1,27 @@
-import React from 'react';
-import SproutSocialHomepage from './SproutSocialHomepage';
-import PlatformFeatures from './PlatformFeatures';
-import IntegrationsSection from './IntegrationsSection';
-import MetricsShowcase from './MetricsShowcase';
-import EnterpriseLanding from './EnterpriseLanding';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HeroSection from './components/HeroSection';
+import PlatformFeatures from './components/PlatformFeatures';
+import IntegrationsSection from './components/IntegrationsSection';
+import MetricsShowcase from './components/MetricsShowcase';
+import EnterpriseLanding from './components/EnterpriseLanding';
+import SolveXAgent from './agent/App';
 
 function App() {
   return (
-    <div className="App">
-      {/* Other components */}
-      <SproutSocialHomepage />
-      <PlatformFeatures />
-      <IntegrationsSection />
-      <MetricsShowcase />
-      <EnterpriseLanding />
-      {/* Other components */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <HeroSection />
+            <PlatformFeatures />
+            <IntegrationsSection />
+            <MetricsShowcase />
+            <EnterpriseLanding />
+          </>
+        } />
+        <Route path="/interface" element={<SolveXAgent />} />
+      </Routes>
+    </Router>
   );
 }
 

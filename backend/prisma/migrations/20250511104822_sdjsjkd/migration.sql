@@ -1,0 +1,72 @@
+-- CreateTable
+CREATE TABLE `User` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(191) NOT NULL,
+    `email` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NOT NULL,
+    `otp` VARCHAR(191) NULL,
+    `verified` BOOLEAN NOT NULL DEFAULT false,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    UNIQUE INDEX `User_email_key`(`email`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `FbAuth` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `fbId` BIGINT NOT NULL,
+    `AccessToken` TEXT NULL,
+    `isConnected` BOOLEAN NOT NULL DEFAULT false,
+    `platform` ENUM('INSTAGRAM', 'FACEBOOK', 'LINKEDIN', 'UNKNOWN') NOT NULL DEFAULT 'UNKNOWN',
+    `userId` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    UNIQUE INDEX `FbAuth_fbId_key`(`fbId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `FbPage` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `PageId` VARCHAR(191) NOT NULL,
+    `status` BOOLEAN NOT NULL DEFAULT false,
+    `userId` INTEGER NOT NULL,
+    `authId` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    UNIQUE INDEX `FbPage_PageId_key`(`PageId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Post` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `userId` INTEGER NOT NULL,
+    `fbPageId` INTEGER NOT NULL,
+    `prompt` TEXT NOT NULL,
+    `imageUrl` TEXT NOT NULL,
+    `caption` TEXT NOT NULL,
+    `hashtags` TEXT NOT NULL,
+    `isPosted` BOOLEAN NOT NULL DEFAULT false,
+    `visibility` ENUM('PRIVATE', 'SOCIAL_ONLY', 'PUBLIC') NOT NULL DEFAULT 'PRIVATE',
+    `isBanned` BOOLEAN NOT NULL DEFAULT false,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `FbAuth` ADD CONSTRAINT `FbAuth_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `FbPage` ADD CONSTRAINT `FbPage_authId_fkey` FOREIGN KEY (`authId`) REFERENCES `FbAuth`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `FbPage` ADD CONSTRAINT `FbPage_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Post` ADD CONSTRAINT `Post_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Post` ADD CONSTRAINT `Post_fbPageId_fkey` FOREIGN KEY (`fbPageId`) REFERENCES `FbPage`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -1,0 +1,116 @@
+.slx-auth-otp-modal {
+  width: 100%;
+  max-width: 450px;
+}
+
+.slx-auth-otp-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.slx-auth-email-highlight {
+  color: var(--slx-auth-accent);
+  font-weight: 600;
+}
+
+.slx-auth-otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.slx-auth-otp-input {
+  width: 48px;
+  height: 54px;
+  background: var(--slx-auth-glass-effect);
+  border: 1px solid var(--slx-auth-glass-border);
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--slx-auth-white);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.slx-auth-otp-input:focus {
+  outline: none;
+  border-color: var(--slx-auth-accent);
+  box-shadow: var(--slx-auth-glow);
+}
+
+.slx-auth-otp-error {
+  color: var(--slx-auth-tertiary-accent);
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.slx-auth-otp-verify-button {
+  margin-bottom: 16px;
+}
+
+.slx-auth-resend-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.slx-auth-resend-button {
+  background: transparent;
+  border: none;
+  color: var(--slx-auth-secondary-accent);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.slx-auth-resend-button:hover:not(.slx-auth-disabled) {
+  color: var(--slx-auth-accent);
+  background: var(--slx-auth-glass-effect);
+}
+
+.slx-auth-resend-button.slx-auth-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.slx-auth-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(10, 51, 49, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--slx-auth-dark-teal);
+  animation: slx-auth-spin 1s ease-in-out infinite;
+}
+
+@keyframes slx-auth-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slx-auth-otp-input.slx-auth-filled {
+  transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+  .slx-auth-otp-input {
+    width: 40px;
+    height: 48px;
+    font-size: 20px;
+  }
+  
+  .slx-auth-otp-header h2 {
+    font-size: 24px;
+  }
+}
+
+.slx-auth-otp-input:not(:placeholder-shown) {
+  box-shadow: 0 0 10px rgba(65, 232, 179, 0.5);
+  border-color: var(--slx-auth-accent);
+}
