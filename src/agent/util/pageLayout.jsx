@@ -3,12 +3,15 @@ import { useState } from 'react';
 import { LassoSelect } from 'lucide-react';
 
 import './pageLayout.css';
-import FullPostLayout from './fullPostLayout';
+import FacebookPostLayout from './fullPostLayout';
+import LinkedinPostLayout from './LinPostLayout';
+import XPostLayout from './xPostLayout';
 
-const PostResult = ({ sectionTitle = "AI Generated Posts", data, loading }) => {
+const PostResult = ({ sectionTitle = "AI Generated Posts", data, loading, platform }) => {
+    console.log(platform)
     const [selectedPost, setSelectedPost] = useState(null);
 
-    if(!loading && !data) return null;
+    if (!loading && !data) return null;
 
     const handlePostClick = (post) => {
         setSelectedPost(post);
@@ -54,7 +57,7 @@ const PostResult = ({ sectionTitle = "AI Generated Posts", data, loading }) => {
                                     <div className="image-overlay"></div>
                                 </div>
                                 <div className="post-content">
-                                    <h3 className="truncate-title">DSummer vacation is almost here! Check out our website for helpful resources and tips for a fun and productive break.</h3>
+                                    <h3 className="truncate-title">{post.caption}</h3>
                                     <div className="hashtags">
                                         {post.hashtags?.slice(0, 3).map((tag, idx) => (
                                             <span key={idx} className="hashtag">{tag}</span>
@@ -73,7 +76,20 @@ const PostResult = ({ sectionTitle = "AI Generated Posts", data, loading }) => {
                 )}
             </div>
 
-            {selectedPost && <FullPostLayout post={selectedPost} onClose={handleCloseModal} />}
+            {selectedPost && (
+                <>
+                    {platform === "facebook" && (
+                        <FacebookPostLayout post={selectedPost} onClose={handleCloseModal} />
+                    )}
+                    {platform === "linkedin" && (
+                        <LinkedinPostLayout post={selectedPost} onClose={handleCloseModal} />
+                    )}
+                    {platform === "twitter" && (
+                        <XPostLayout post={selectedPost} onClose={handleCloseModal} />
+                    )}
+
+                </>
+            )}
         </div>
     );
 };

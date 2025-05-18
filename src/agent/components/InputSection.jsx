@@ -14,8 +14,8 @@ import "./InputSection.css"
 const platforms = [
   // { label: "Instagram", value: "instagram", icon: <Instagram size={16} /> },
   { label: "Facebook", value: "facebook", icon: <Facebook size={16} /> },
-  // { label: "X", value: "twitter", icon: <Twitter size={16} /> },
-  // { label: "LinkedIn", value: "linkedin", icon: <Linkedin size={16} /> }
+  { label: "X", value: "twitter", icon: <Twitter size={16} /> },
+  { label: "LinkedIn", value: "linkedin", icon: <Linkedin size={16} /> }
 ]
 
 const placeholderPrompts = [
@@ -24,7 +24,7 @@ const placeholderPrompts = [
   "a Facebook story promoting our new spa service..."
 ]
 
-const InputSection = ({ onGenerate, setIsLoading, postSectionRef}) => {
+const InputSection = ({ onGenerate, setIsLoading, postSectionRef, sendPlatform }) => {
   const [inputValue, setInputValue] = useState("")
   const [isFocused, setIsFocused] = useState(false)
   const [selectedPlatform, setSelectedPlatform] = useState(platforms[0])
@@ -44,9 +44,9 @@ const InputSection = ({ onGenerate, setIsLoading, postSectionRef}) => {
     try {
       const response = await axios.post("http://localhost:5000/api/post/post-gen", {
         prompt: inputValue,
-        platform: selectedPlatform
+        platform: selectedPlatform.value
       })
-      onGenerate(response.data)
+      onGenerate(response.data);
     } catch (error) {
       console.error("Error generating post", error)
     }
@@ -82,6 +82,11 @@ const InputSection = ({ onGenerate, setIsLoading, postSectionRef}) => {
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
+
+  useEffect(()=>{
+      sendPlatform(selectedPlatform.value);
+      console.log(selectedPlatform.value);
+  },[selectedPlatform])
 
   const handleInputChange = (e) => {
     const text = e.target.value
@@ -145,7 +150,7 @@ const InputSection = ({ onGenerate, setIsLoading, postSectionRef}) => {
             </div>
           </div>
 
-          <button 
+          <button
             className="slx-create-button"
             onClick={handleGenerate}
             disabled={loading}

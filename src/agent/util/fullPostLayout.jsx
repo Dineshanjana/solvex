@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { ThumbsUp, MessageCircle, Share2, Facebook, X, ChevronDown } from 'lucide-react';
 import './fullPostLayout.css';
+import NoPageModal from './NoPageModal';
 import axios from 'axios';
 
 const FacebookPostLayout = ({ post, onClose }) => {
@@ -42,7 +43,7 @@ const FacebookPostLayout = ({ post, onClose }) => {
     };
   }, []);
 
-  if (!post || !selectedPage) return null;
+ if (!post || !selectedPage) return null;
 
   const handlePublish = async () => {
     if (!selectedPage || !selectedPage.AccessToken) {
