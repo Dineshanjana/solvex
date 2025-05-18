@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Platform {
+  INSTAGRAM
+  FACEBOOK
+  LINKEDIN
+  X
+  UNKNOWN
+}
+
+enum Visibility {
+  PRIVATE
+  SOCIAL_ONLY
+  PUBLIC
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  otp       String?
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  posts     Post[]
+  FbAuth    FbAuth[]
+  FbPage    FbPage[]
+}
+
+model FbAuth {
+  id          Int      @id @default(autoincrement())
+  fbId        String   @unique
+  AccessToken String?  @db.Text
+  isConnected Boolean  @default(false)
+  platform    Platform @default(UNKNOWN)
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  FbPage      FbPage[]
+  createdAt   DateTime @default(now())
+}
+
+model FbPage {
+  id          Int      @id @default(autoincrement())
+  PageId      String   @unique
+  name        String?
+  username    String?
+  email       String?
+  category    String?
+  picture     String?  @db.Text
+  AccessToken String?  @db.Text
+  status      Boolean  @default(false)
+  userId      Int
+  authId      Int
+  fbAuth      FbAuth   @relation(fields: [authId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
+  post        Post[]
+  createdAt   DateTime @default(now())
+}
+
+model Post {
+  id         Int        @id @default(autoincrement())
+  user       User       @relation(fields: [userId], references: [id])
+  userId     Int
+  fbPage     FbPage     @relation(fields: [fbPageId], references: [id])
+  fbPageId   Int
+  prompt     String?     @db.Text
+  imageUrl   String?     @db.Text
+  caption    String?     @db.Text
+  hashtags   String?     @db.Text
+  isPosted   Boolean    @default(false)
+  visibility Visibility @default(PRIVATE)
+  isBanned   Boolean    @default(false)
+  createdAt  DateTime   @default(now())
+}
