@@ -1,0 +1,305 @@
+
+
+
+:root {
+  --x-bg: #000000;
+  --x-text: #e7e9ea;
+  --x-secondary-text: #71767b;
+  --x-border: #2f3336;
+  --x-blue: #1d9bf0;
+  --x-hover-blue: #1a8cd8;
+  --x-retweet-green: #00ba7c;
+  --x-like-red: #f91880;
+  --x-hover-bg: rgba(239, 243, 244, 0.1);
+  --x-button-bg: #eff3f4;
+  --x-button-text: #0f1419;
+}
+
+.x-layout {
+  background-color: var(--x-bg);
+  color: var(--x-text);
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.x-header {
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--x-border);
+  padding: 12px 16px;
+}
+
+.x-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.x-close {
+  background-color: transparent;
+  border: none;
+  color: var(--x-text);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.x-close:hover {
+  background-color: var(--x-hover-bg);
+}
+
+.x-post-container {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(90vh - 120px);
+  overflow-y: auto;
+}
+
+.x-post-header {
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid var(--x-border);
+}
+
+/* Account Selector Styles */
+.account-selector-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.selected-account {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: 1px solid var(--x-border);
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: var(--x-text);
+}
+
+.selected-account:hover {
+  background-color: var(--x-hover-bg);
+}
+
+.account-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--x-text);
+}
+
+.account-username {
+  font-size: 13px;
+  color: var(--x-secondary-text);
+}
+
+/* Post Content Styles */
+.x-post-content {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.x-post-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.x-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.x-user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.x-user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.x-user-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.x-display-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--x-text);
+}
+
+.x-username {
+  font-size: 14px;
+  color: var(--x-secondary-text);
+}
+
+.x-post-time {
+  color: var(--x-secondary-text);
+  font-size: 14px;
+}
+
+.x-post-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--x-text);
+  margin: 0;
+}
+
+.x-hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.x-tag {
+  color: var(--x-blue);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.x-tag:hover {
+  text-decoration: underline;
+}
+
+.x-image-container {
+  margin-top: 8px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--x-border);
+}
+
+.x-image-container img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.x-post-stats {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0;
+  color: var(--x-secondary-text);
+  font-size: 13px;
+}
+
+.x-stat {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.x-stat-number {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.x-divider {
+  height: 1px;
+  background-color: var(--x-border);
+  margin: 4px 0;
+}
+
+.x-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.x-action-button {
+  color: var(--x-secondary-text);
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.x-action-button:hover {
+  color: var(--x-blue);
+  background-color: rgba(29, 155, 240, 0.1);
+}
+
+.x-action-button.liked {
+  color: var(--x-like-red);
+}
+
+.x-action-button.liked:hover {
+  background-color: rgba(249, 24, 128, 0.1);
+}
+
+.x-action-button.retweeted {
+  color: var(--x-retweet-green);
+}
+
+.x-action-button.retweeted:hover {
+  background-color: rgba(0, 186, 124, 0.1);
+}
+
+.x-publish-container {
+  padding: 16px;
+  border-top: 1px solid var(--x-border);
+}
+
+.x-publish-button {
+  background-color: var(--x-button-bg);
+  color: var(--x-button-text);
+  font-weight: 700;
+  transition: background-color 0.2s;
+}
+
+.x-publish-button:hover {
+  background-color: #e1e8ed;
+}
+
+.x-publish-button:active {
+  background-color: #d1d9e0;
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  .x-post-container {
+    max-height: calc(90vh - 100px);
+  }
+  
+  .x-user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .x-publish-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
